@@ -1,10 +1,28 @@
 {
     "name": "choku",
     "version": "0.0.1",
+    "type": "module",
     "main": "index.js",
+    "bin": {
+        "choku": "./dist/index.js"
+    },
     "scripts": {
-        "start": "node index.js"
+        "web:dev": "cd web && npm run dev",
+        "web:build": "cd web && rimraf ./build && npm run build",
+        "build": "rimraf ./dist && node ./build.js",
+        "dev": "tsx watch index.ts",
+        "prod": "node dist/index.js"
     },
     "author": "Denis Loch",
-    "license": "AGPL-3.0-only "
+    "license": "AGPL-3.0-only ",
+    "devDependencies": {
+        "@sprout2000/esbuild-copy-plugin": "^1.1.16",
+        "esbuild": "^0.24.0",
+        "rimraf": "^6.0.1",
+        "tsx": "^4.19.2"
+    },
+    "dependencies": {
+        "commander": "^12.1.0",
+        "polka": "^0.5.2"
+    }
 }
